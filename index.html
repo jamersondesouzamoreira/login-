@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acesso Acadêmico - Login Hi-Tech</title>
+  <title>SISTEMA ACADÊMICO - Acesso Cyberpunk</title>
   
-  <!-- Biblioteca de Ícones FontAwesome para os inputs e redes sociais -->
+  <!-- Ícones FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Reset padrão de estilos */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background-color: #080a10;
+      background-color: #070913;
       color: #f1f5f9;
       height: 100vh;
       display: flex;
@@ -33,17 +32,18 @@
       height: 100vh;
     }
 
-    /* --- LADO ESQUERDO: Painel Futurista com Imagem --- */
+    /* --- LADO ESQUERDO: Imagem Cyberpunk Hi-Tech --- */
     .left-panel {
-      flex: 1.2;
-      background: linear-gradient(to top, rgba(8, 10, 16, 0.95), rgba(8, 10, 16, 0.3)),
-                  url('watermarked_img_8495912573925884893.jpg') center/cover no-repeat;
+      flex: 1.25;
+      background: linear-gradient(135deg, rgba(7, 9, 19, 0.85) 0%, rgba(7, 9, 19, 0.3) 100%),
+                  url('image_94a1c5.jpg') center/cover no-repeat;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 60px 80px;
-      border-right: 1px solid rgba(0, 240, 255, 0.15);
+      border-right: 2px solid rgba(0, 210, 255, 0.3);
+      box-shadow: 5px 0 25px rgba(0, 210, 255, 0.2);
     }
 
     .brand-logo {
@@ -52,13 +52,13 @@
       gap: 12px;
       font-size: 20px;
       font-weight: 700;
-      color: #00f0ff;
+      color: #00d2ff;
       letter-spacing: 1px;
     }
 
     .brand-logo i {
       font-size: 24px;
-      filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+      filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
     }
 
     .panel-content {
@@ -71,7 +71,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: #8b5cf6;
+      color: #a855f7;
       margin-bottom: 12px;
     }
 
@@ -80,7 +80,8 @@
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 100%);
+      color: #ffffff;
+      background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -96,30 +97,30 @@
       color: #64748b;
     }
 
-    /* --- LADO DIREITO: Form em Card Hi-Tech --- */
+    /* --- LADO DIREITO: Card de Login Estilo Moderno / Cyberpunk --- */
     .right-panel {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0d111a;
+      background: #0b0e17;
       background-image: 
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(0, 240, 255, 0.08) 0%, transparent 40%);
+        radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.08) 0%, transparent 40%);
       padding: 40px;
+      position: relative;
     }
 
     .login-card {
       width: 100%;
       max-width: 440px;
-      background: rgba(18, 24, 38, 0.75);
+      background: rgba(13, 17, 28, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 210, 255, 0.3);
       border-radius: 16px;
       padding: 40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
-                  0 0 30px rgba(0, 240, 255, 0.05);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.15), inset 0 0 15px rgba(0, 212, 255, 0.05);
     }
 
     .card-header {
@@ -135,10 +136,10 @@
 
     .card-subtitle {
       font-size: 14px;
-      color: #64748b;
+      color: #6b7c96;
     }
 
-    /* Estilização dos Formulários e Inputs */
+    /* Formulário */
     .form-group {
       margin-bottom: 20px;
     }
@@ -147,7 +148,7 @@
       display: block;
       font-size: 13px;
       font-weight: 500;
-      color: #94a3b8;
+      color: #8a99ad;
       margin-bottom: 8px;
     }
 
@@ -159,42 +160,38 @@
 
     .input-wrapper i.icon-left {
       position: absolute;
-      left: 14px;
-      color: #64748b;
-      font-size: 15px;
-      transition: color 0.3s ease;
+      left: 15px;
+      color: #00d2ff;
+      font-size: 14px;
     }
 
     .input-wrapper i.icon-right {
       position: absolute;
-      right: 14px;
-      color: #64748b;
-      font-size: 15px;
+      right: 15px;
+      color: #6b7c96;
+      font-size: 14px;
       cursor: pointer;
     }
 
     .input-wrapper input {
       width: 100%;
-      padding: 12px 16px 12px 42px;
-      background: #090d16;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      color: #f8fafc;
+      padding: 12px 15px 12px 42px;
+      background: #0d121d;
+      border: 1px solid #00d2ff;
+      border-radius: 8px;
+      color: #ffffff;
       font-size: 14px;
       outline: none;
+      box-shadow: 0 0 8px rgba(0, 210, 255, 0.2);
       transition: all 0.3s ease;
     }
 
     .input-wrapper input:focus {
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
       border-color: #00f0ff;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
     }
 
-    .input-wrapper input:focus ~ i.icon-left {
-      color: #00f0ff;
-    }
-
-    /* Lembrar de mim e Esqueceu a senha */
+    /* Opções (Lembrar / Esqueci Senha) */
     .form-options {
       display: flex;
       align-items: center;
@@ -207,117 +204,141 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #94a3b8;
+      color: #8a99ad;
       cursor: pointer;
     }
 
     .remember-me input[type="checkbox"] {
-      accent-color: #00f0ff;
-      width: 16px;
-      height: 16px;
+      accent-color: #00d2ff;
+      width: 15px;
+      height: 15px;
       cursor: pointer;
     }
 
     .forgot-link {
-      color: #00f0ff;
+      color: #00d2ff;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s ease;
     }
 
     .forgot-link:hover {
-      color: #38bdf8;
       text-decoration: underline;
     }
 
     /* Botão Entrar */
-    .btn-submit {
+    .btn-login {
       width: 100%;
-      padding: 13px;
-      background: linear-gradient(90deg, #2563eb, #00f0ff);
-      border: none;
-      border-radius: 10px;
-      color: #ffffff;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid #00d2ff;
+      border-radius: 8px;
+      color: #00d2ff;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: bold;
+      letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0, 240, 255, 0.3);
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
       transition: all 0.3s ease;
+      text-transform: uppercase;
     }
 
-    .btn-submit:hover {
-      box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5);
-      transform: translateY(-1px);
+    .btn-login:hover {
+      background: #00d2ff;
+      color: #000;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
     }
 
-    /* Divisor & Botões das Redes Sociais */
+    /* Divisor e Redes Sociais */
     .social-divider {
       display: flex;
       align-items: center;
       text-align: center;
-      color: #475569;
+      color: #5c6b80;
       font-size: 12px;
-      margin: 24px 0;
+      margin: 24px 0 15px 0;
     }
 
     .social-divider::before,
     .social-divider::after {
       content: '';
       flex: 1;
-      border-bottom: 1px solid #1e293b;
+      border-bottom: 1px solid #252f40;
     }
 
     .social-divider span {
       padding: 0 12px;
     }
 
-    .social-buttons {
+    .social-login {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 15px;
+      margin-bottom: 25px;
     }
 
     .social-btn {
-      flex: 1;
+      width: 42px;
       height: 42px;
-      background: #090d16;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
+      background: #121824;
+      border: 1px solid #252f40;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #cbd5e1;
-      font-size: 16px;
+      color: #fff;
+      font-size: 18px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .social-btn:hover {
-      border-color: #00f0ff;
-      background: #111726;
-      color: #00f0ff;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+      border-color: #00d2ff;
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+      color: #00d2ff;
     }
 
-    /* Rodapé do Card */
-    .card-footer {
+    .signup-text {
       text-align: center;
+      color: #6b7c96;
       font-size: 13px;
-      color: #64748b;
     }
 
-    .card-footer a {
-      color: #00f0ff;
+    .signup-text a {
+      color: #00d2ff;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: bold;
     }
 
-    .card-footer a:hover {
-      text-decoration: underline;
+    /* Modal de Recuperação de Senha */
+    .recovery-modal {
+      display: none;
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(13, 17, 28, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 10;
     }
 
-    /* Responsividade */
+    .recovery-modal.active {
+      display: flex;
+    }
+
+    .back-btn {
+      background: transparent;
+      border: none;
+      color: #00d2ff;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
     @media (max-width: 900px) {
       .left-panel {
         display: none;
@@ -328,7 +349,7 @@
 <body>
 
   <main class="login-wrapper">
-    <!-- LADO ESQUERDO: Painel com Imagem e Textos Hi-Tech -->
+    <!-- LADO ESQUERDO: Imagem Cyberpunk selecionada -->
     <section class="left-panel">
       <div class="brand-logo">
         <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
@@ -348,59 +369,110 @@
       </footer>
     </section>
 
-    <!-- LADO DIREITO: Formulário de Login -->
+    <!-- LADO DIREITO: Formulário Completo -->
     <section class="right-panel">
       <div class="login-card">
-        <header class="card-header">
-          <h2 class="card-title">Bem-vindo novamente</h2>
-          <p class="card-subtitle">Informe seus dados para acessar o sistema.</p>
-        </header>
+        
+        <!-- Formulário de Login Principal -->
+        <div id="loginFormView">
+          <header class="card-header">
+            <h2 class="card-title">Bem-vindo novamente</h2>
+            <p class="card-subtitle">Informe seus dados para acessar o sistema.</p>
+          </header>
 
-        <form action="#" method="POST">
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <div class="input-wrapper">
-              <i class="fa-regular fa-envelope icon-left" aria-hidden="true"></i>
-              <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-envelope icon-left" aria-hidden="true"></i>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="password">Senha</label>
-            <div class="input-wrapper">
-              <i class="fa-solid fa-lock icon-left" aria-hidden="true"></i>
-              <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
-              <i class="fa-regular fa-eye icon-right" aria-hidden="true"></i>
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock icon-left" aria-hidden="true"></i>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                <i class="fa-regular fa-eye icon-right" id="togglePassword" aria-hidden="true"></i>
+              </div>
             </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <span>Lembrar de mim</span>
+              </label>
+              <a href="#" class="forgot-link" id="showRecovery">Esqueci minha senha</a>
+            </div>
+
+            <button type="submit" class="btn-login">Entrar</button>
+          </form>
+
+          <div class="social-divider">
+            <span>Ou acesse com</span>
           </div>
 
-          <div class="form-options">
-            <label class="remember-me">
-              <input type="checkbox" id="remember" name="remember">
-              <span>Lembrar de mim</span>
-            </label>
-            <a href="#" class="forgot-link">Esqueci minha senha</a>
+          <!-- Login Social (Google, GitHub, Apple) -->
+          <div class="social-login">
+            <button type="button" class="social-btn" title="Entrar com Google"><i class="fa-brands fa-google"></i></button>
+            <button type="button" class="social-btn" title="Entrar com GitHub"><i class="fa-brands fa-github"></i></button>
+            <button type="button" class="social-btn" title="Entrar com Apple"><i class="fa-brands fa-apple"></i></button>
           </div>
 
-          <button type="submit" class="btn-submit">Entrar</button>
-        </form>
-
-        <div class="social-divider">
-          <span>Ou acesse com</span>
+          <div class="signup-text">
+            Não possui uma conta? <a href="#">Criar conta</a>
+          </div>
         </div>
 
-        <div class="social-buttons">
-          <button type="button" class="social-btn" title="Entrar com Google"><i class="fa-brands fa-google"></i></button>
-          <button type="button" class="social-btn" title="Entrar com GitHub"><i class="fa-brands fa-github"></i></button>
-          <button type="button" class="social-btn" title="Entrar com Apple"><i class="fa-brands fa-apple"></i></button>
+        <!-- Tela de Recuperação de Senha -->
+        <div class="recovery-modal" id="recoveryView">
+          <button class="back-btn" id="backToLogin"><i class="fa-solid fa-arrow-left"></i> Voltar ao login</button>
+          <header class="card-header">
+            <h2 class="card-title">Recuperar Senha</h2>
+            <p class="card-subtitle">Insira seu e-mail cadastrado para redefinir o acesso.</p>
+          </header>
+
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="recoveryEmail">E-mail</label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-envelope icon-left" aria-hidden="true"></i>
+                <input type="email" id="recoveryEmail" placeholder="Digite seu e-mail" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-login" style="margin-top: 10px;">Enviar Instruções</button>
+          </form>
         </div>
 
-        <footer class="card-footer">
-          <p>Ainda não possui uma conta? <a href="#">Criar conta</a></p>
-        </footer>
       </div>
     </section>
   </main>
+
+  <!-- Scripts de Interatividade -->
+  <script>
+    const showRecovery = document.getElementById('showRecovery');
+    const backToLogin = document.getElementById('backToLogin');
+    const recoveryView = document.getElementById('recoveryView');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    showRecovery.addEventListener('click', (e) => {
+      e.preventDefault();
+      recoveryView.classList.add('active');
+    });
+
+    backToLogin.addEventListener('click', () => {
+      recoveryView.classList.remove('active');
+    });
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      togglePassword.classList.toggle('fa-eye');
+      togglePassword.classList.toggle('fa-eye-slash');
+    });
+  </script>
 
 </body>
 </html>

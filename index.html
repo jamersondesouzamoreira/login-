@@ -1,102 +1,435 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema Acadêmico - Login</title>
-  <!-- Ícones do FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Arquivo de Estilo CSS -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div class="page-wrapper">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso ao Sistema Cyberpunk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- LADO ESQUERDO: Imagem com Overlay e Texto -->
-    <div class="left-banner">
-      <div class="banner-overlay"></div>
-      
-      <!-- Marca/Logo no topo superior esquerdo -->
-      <div class="top-brand">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span>Acadêmico</span>
-      </div>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#05070f',
+                            card: '#0a0d18',
+                            border: '#1e2640',
+                            accent: '#00f0ff',
+                            purple: '#7000ff',
+                            pink: '#ff007f',
+                            dim: 'rgba(0, 240, 255, 0.15)'
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
 
-      <!-- Informações no canto inferior esquerdo (sobre a imagem) -->
-      <div class="bottom-content">
-        <p class="tagline">SISTEMA ACADÊMICO</p>
-        <h1 class="main-title">Tecnologia e informação em um único ambiente.</h1>
-        <p class="description">
-          Acesse sua conta para acompanhar conteúdos, atividades e informações da plataforma.
-        </p>
-      </div>
+    <style>
+        body {
+            background-color: #05070f;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Efeito Glow Cyberpunk */
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+        }
+        .glow-cyan-lg {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        .glow-purple {
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
+        }
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+        }
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(112, 0, 255, 0.8);
+        }
+
+        /* Scanlines no estilo monitor antigo */
+        .scanline-bg {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.3)
+            );
+            background-size: 100% 4px;
+        }
+
+        /* Animação de Pulso de Linha */
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+        .scan-bar {
+            animation: scan 8s linear infinite;
+        }
+
+        /* Botão Cyber Cutout */
+        .cyber-button {
+            clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+            transition: all 0.3s ease;
+        }
+        .cyber-button:hover {
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+        }
+
+        /* Overlay para a imagem */
+        .img-cyber-overlay {
+            background: linear-gradient(180deg, rgba(5,7,15,0.3) 0%, rgba(5,7,15,0.75) 60%, rgba(5,7,15,0.95) 100%),
+                        linear-gradient(90deg, rgba(0,240,255,0.1) 0%, rgba(112,0,255,0.15) 100%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00f0ff;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-0 md:p-4 lg:p-6 relative selection:bg-cyber-accent selection:text-black">
+
+    <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+        <div class="absolute inset-0 bg-[radial-gradient(#00f0ff_1px,transparent_1px)] [background-size:32px_32px]"></div>
+        <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-cyber-purple rounded-full filter blur-[120px] opacity-40"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-cyber-accent rounded-full filter blur-[130px] opacity-30"></div>
     </div>
 
-    <!-- LADO DIREITO: Painel de Login -->
-    <div class="right-panel">
-      
-      <!-- Card Centralizado de Login -->
-      <div class="login-card">
-        <div class="card-header">
-          <h2>Bem-vindo novamente</h2>
-          <p>Informe seus dados para acessar o sistema.</p>
-        </div>
+    <!-- Container Principal (Split Screen) -->
+    <main class="w-full max-w-7xl h-screen md:h-[90vh] bg-cyber-card/80 backdrop-blur-xl md:rounded-3xl border border-cyber-border overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-[0_0_50px_rgba(0,0,0,0.8)] relative z-10">
 
-        <form class="login-form">
-          <!-- Campo E-mail -->
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <div class="input-wrapper">
-              <i class="fa-regular fa-envelope input-icon"></i>
-              <input type="email" id="email" placeholder="Digite seu e-mail" required>
+        <!-- LADO ESQUERDO: Arte Futurista + Overlay Tecnológico Discreto -->
+        <section class="lg:col-span-7 relative flex flex-col justify-between p-6 sm:p-10 overflow-hidden group min-h-[350px] lg:min-h-full">
+            
+            <!-- Imagem de Fundo de Alta Qualidade Cyberpunk Setup -->
+            <img 
+                src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" 
+                alt="Pessoa em setup cyberpunk futurista com múltiplos monitores" 
+                class="absolute inset-0 w-full h-full object-cover object-center transform scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out"
+                onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'"
+            />
+            
+            <!-- Filtro e Iluminação Cyan/Purple na imagem -->
+            <div class="absolute inset-0 img-cyber-overlay"></div>
+            
+            <!-- Linha de Scan / Varrida de tela -->
+            <div class="absolute inset-0 scanline-bg pointer-events-none"></div>
+            <div class="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-cyber-accent to-transparent opacity-40 scan-bar pointer-events-none"></div>
+
+            <!-- TOPO ESQUERDO: Status do Sistema Discreto -->
+            <div class="relative z-10 flex items-center justify-between">
+                <div class="flex items-center gap-3 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-cyber-accent/30 text-xs font-mono tracking-widest text-cyber-accent">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-accent opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-accent"></span>
+                    </span>
+                    <span>SISTEMA ONLINE // V2.4.0</span>
+                </div>
+                
+                <div class="hidden sm:flex items-center gap-2 font-mono text-[11px] text-slate-400 bg-black/30 backdrop-blur-md px-3 py-1 rounded-md border border-white/5">
+                    <i class="fa-solid fa-shield-halved text-cyber-accent"></i>
+                    <span>CONEXÃO ENCRIPTADA</span>
+                </div>
             </div>
-          </div>
 
-          <!-- Campo Senha -->
-          <div class="form-group">
-            <label for="password">Senha</label>
-            <div class="input-wrapper">
-              <i class="fa-solid fa-lock input-icon"></i>
-              <input type="password" id="password" placeholder="Digite sua senha" required>
-              <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
+            <!-- MEIO/RODAPÉ ESQUERDO: Texto Conceitual Elegante e Discreto -->
+            <div class="relative z-10 mt-auto pt-12">
+                <!-- Caixa translúcida que melhora a leitura sem tampar a arte -->
+                <div class="bg-black/50 backdrop-blur-md p-6 rounded-2xl border border-white/10 max-w-lg space-y-3">
+                    
+                    <div class="flex items-center gap-2 text-cyber-accent font-mono text-xs tracking-wider uppercase">
+                        <i class="fa-solid fa-terminal text-xs"></i>
+                        <span>Acesso ao Núcleo Central</span>
+                        <span class="text-slate-600">|</span>
+                        <span class="text-slate-400">ID: #9942-PX</span>
+                    </div>
+
+                    <h2 class="font-orbitron text-2xl sm:text-3xl font-bold tracking-wide text-white leading-tight">
+                        SISTEMA OPERACIONAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-accent to-purple-400 text-glow-cyan">CYBER</span>
+                    </h2>
+
+                    <p class="text-slate-300 text-sm font-rajdhani font-medium leading-relaxed">
+                        Interface neural otimizada para operações em tempo real. Autentique-se para liberar suas credenciais do servidor corporativo.
+                    </p>
+
+                    <!-- Indicadores discretos de estatísticas/métricas -->
+                    <div class="pt-2 grid grid-cols-3 gap-2 border-t border-white/10 text-xs font-mono">
+                        <div>
+                            <span class="text-slate-500 block text-[10px]">LATÊNCIA</span>
+                            <span class="text-emerald-400 font-semibold">12 ms</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block text-[10px]">SEGURANÇA</span>
+                            <span class="text-cyber-accent font-semibold">256-BIT SSL</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block text-[10px]">SERVIDOR</span>
+                            <span class="text-purple-400 font-semibold">NEO-TOKYO 01</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-          </div>
 
-          <!-- Opções: Lembrar de mim & Esqueci minha senha -->
-          <div class="form-options">
-            <label class="remember-me">
-              <input type="checkbox">
-              <span>Lembrar de mim</span>
-            </label>
-            <a href="#" class="forgot-password">Esqueci minha senha</a>
-          </div>
+        </section>
 
-          <!-- Botão Entrar -->
-          <button type="submit" class="btn-submit">Entrar</button>
-        </form>
+        <!-- LADO DIREITO: Formulário de Login totalmente em Português -->
+        <section class="lg:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-cyber-card relative z-10 border-t lg:border-t-0 lg:border-l border-cyber-border">
+            
+            <!-- Cabeçalho do Formulário -->
+            <div>
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyber-accent to-cyber-purple flex items-center justify-center glow-cyan">
+                            <i class="fa-solid fa-cube text-black font-bold"></i>
+                        </div>
+                        <span class="font-orbitron font-bold tracking-widest text-lg text-white">NEXUS<span class="text-cyber-accent">.OS</span></span>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500 uppercase tracking-widest">BR / PT</span>
+                </div>
 
-        <!-- Footer do Card -->
-        <div class="card-footer">
-          Ainda não possui uma conta? <a href="#">Criar conta</a>
+                <div class="mb-8">
+                    <h1 class="font-orbitron text-2xl sm:text-3xl font-black text-white tracking-wide uppercase mb-2">
+                        ACESSO RESTRITO
+                    </h1>
+                    <p class="text-slate-400 text-sm font-medium">
+                        Insira suas credenciais abaixo para entrar no sistema.
+                    </p>
+                </div>
+
+                <!-- Formulário -->
+                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-5">
+                    
+                    <!-- Campo de E-mail -->
+                    <div class="space-y-2">
+                        <label for="email" class="block text-xs font-mono font-semibold tracking-wider text-slate-300 uppercase">
+                            Endereço de E-mail <span class="text-cyber-accent">*</span>
+                        </label>
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 group-focus-within:text-cyber-accent transition-colors">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                required 
+                                placeholder="seu.email@exemplo.com"
+                                class="w-full pl-10 pr-4 py-3 bg-[#05070f] border border-cyber-border rounded-xl focus:outline-none focus:border-cyber-accent text-white placeholder-slate-600 text-sm font-sans transition-all duration-300 focus:glow-cyan"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Campo de Senha -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label for="password" class="block text-xs font-mono font-semibold tracking-wider text-slate-300 uppercase">
+                                Senha <span class="text-cyber-accent">*</span>
+                            </label>
+                            <a href="#" class="text-xs text-cyber-accent hover:text-cyan-300 hover:underline font-mono transition-colors">
+                                Esqueceu a senha?
+                            </a>
+                        </div>
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 group-focus-within:text-cyber-accent transition-colors">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                required 
+                                placeholder="••••••••"
+                                class="w-full pl-10 pr-10 py-3 bg-[#05070f] border border-cyber-border rounded-xl focus:outline-none focus:border-cyber-accent text-white placeholder-slate-600 text-sm font-sans transition-all duration-300 focus:glow-cyan"
+                            >
+                            <!-- Alternar visibilidade de senha -->
+                            <button 
+                                type="button" 
+                                onclick="togglePasswordVisibility()" 
+                                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-500 hover:text-cyber-accent transition-colors"
+                            >
+                                <i id="eyeIcon" class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Manter conectado -->
+                    <div class="flex items-center">
+                        <label class="flex items-center gap-2.5 cursor-pointer select-none group">
+                            <input type="checkbox" class="sr-only peer">
+                            <div class="w-4 h-4 rounded border border-cyber-border bg-[#05070f] peer-checked:bg-cyber-accent peer-checked:border-cyber-accent flex items-center justify-center transition-all group-hover:border-cyber-accent">
+                                <i class="fa-solid fa-check text-[10px] text-black opacity-0 peer-checked:opacity-100 font-bold"></i>
+                            </div>
+                            <span class="text-xs text-slate-400 font-medium group-hover:text-slate-300 transition-colors">Lembrar deste dispositivo</span>
+                        </label>
+                    </div>
+
+                    <!-- Botão de Login Principal -->
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="cyber-button w-full py-3.5 px-6 bg-gradient-to-r from-cyber-accent via-cyan-400 to-cyber-purple text-black font-orbitron font-bold text-sm tracking-widest uppercase glow-cyan hover:glow-cyan-lg transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
+                    >
+                        <span id="btnText">ENTRAR NO SISTEMA</span>
+                        <i id="btnIcon" class="fa-solid fa-arrow-right-to-bracket"></i>
+                    </button>
+                </form>
+
+                <!-- Divisor estilo Cyberpunk -->
+                <div class="relative my-6 text-center">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-cyber-border"></div>
+                    </div>
+                    <span class="relative px-4 bg-cyber-card text-[11px] font-mono text-slate-500 uppercase tracking-widest">
+                        ou conectar com
+                    </span>
+                </div>
+
+                <!-- Botões de Login Social em Português -->
+                <div class="grid grid-cols-3 gap-3">
+                    <button type="button" onclick="socialLogin('Google')" class="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#05070f] hover:bg-slate-900 border border-cyber-border hover:border-slate-600 rounded-xl transition-all group">
+                        <i class="fa-brands fa-google text-slate-400 group-hover:text-white transition-colors"></i>
+                        <span class="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">Google</span>
+                    </button>
+                    <button type="button" onclick="socialLogin('GitHub')" class="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#05070f] hover:bg-slate-900 border border-cyber-border hover:border-slate-600 rounded-xl transition-all group">
+                        <i class="fa-brands fa-github text-slate-400 group-hover:text-white transition-colors"></i>
+                        <span class="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">GitHub</span>
+                    </button>
+                    <button type="button" onclick="socialLogin('Apple')" class="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#05070f] hover:bg-slate-900 border border-cyber-border hover:border-slate-600 rounded-xl transition-all group">
+                        <i class="fa-brands fa-apple text-slate-400 group-hover:text-white transition-colors"></i>
+                        <span class="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors">Apple</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rodapé do Formulário -->
+            <div class="mt-8 text-center pt-4 border-t border-cyber-border/50">
+                <p class="text-xs text-slate-400">
+                    Ainda não possui acesso? 
+                    <a href="#" onclick="showRegisterNotice(event)" class="text-cyber-accent font-semibold hover:underline hover:text-cyan-300 transition-colors ml-1">
+                        Criar uma conta
+                    </a>
+                </p>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Caixa de Notificação Customizada (Substitui o alert padrão) -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-[#0a0d18] border border-cyber-accent px-5 py-4 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.3)] flex items-center gap-3">
+            <div id="toastIcon" class="w-8 h-8 rounded-lg bg-cyber-accent/20 border border-cyber-accent flex items-center justify-center text-cyber-accent">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h4 id="toastTitle" class="font-orbitron text-xs font-bold text-white uppercase">Notificação</h4>
+                <p id="toastMessage" class="text-xs text-slate-300 font-medium">Operação realizada.</p>
+            </div>
         </div>
-      </div>
-
     </div>
 
-  </div>
+    <script>
+        // Alternar visibilidade da senha
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
 
-  <!-- Script básico para alternar visibilidade da senha -->
-  <script>
-    const togglePassword = document.querySelector('#togglePassword');
-    const password = document.querySelector('#password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
 
-    togglePassword.addEventListener('click', function () {
-      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-      password.setAttribute('type', type);
-      this.classList.toggle('fa-eye');
-      this.classList.toggle('fa-eye-slash');
-    });
-  </script>
+        // Exibir Notificação Customizada
+        function showToast(title, message, isError = false) {
+            const toast = document.getElementById('toastNotification');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastTitle.innerText = title;
+            toastMessage.innerText = message;
+
+            if (isError) {
+                toastIcon.className = "w-8 h-8 rounded-lg bg-rose-500/20 border border-rose-500 flex items-center justify-center text-rose-400";
+                toastIcon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+                toast.querySelector('div').style.borderColor = '#f43f5e';
+            } else {
+                toastIcon.className = "w-8 h-8 rounded-lg bg-cyber-accent/20 border border-cyber-accent flex items-center justify-center text-cyber-accent";
+                toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                toast.querySelector('div').style.borderColor = '#00f0ff';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        // Simulação de Envio do Formulário
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const submitBtn = document.getElementById('submitBtn');
+            const email = document.getElementById('email').value;
+
+            // Ativar estado de carregamento
+            btnText.innerText = "AUTENTICANDO...";
+            btnIcon.className = "fa-solid fa-circle-notch animate-spin";
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // Restaurar botão
+                btnText.innerText = "ACESSO CONCEDIDO!";
+                btnIcon.className = "fa-solid fa-check text-green-900";
+                
+                showToast("SUCESSO", `Bem-vindo de volta! Login efetuado para ${email}`);
+
+                setTimeout(() => {
+                    btnText.innerText = "ENTRAR NO SISTEMA";
+                    btnIcon.className = "fa-solid fa-arrow-right-to-bracket";
+                    submitBtn.disabled = false;
+                }, 2000);
+
+            }, 1500);
+        }
+
+        // Login Social
+        function socialLogin(provider) {
+            showToast("CONECTANDO", `Iniciando autenticação via ${provider}...`);
+        }
+
+        // Aviso de Cadastro
+        function showRegisterNotice(e) {
+            e.preventDefault();
+            showToast("SISTEMA", "Redirecionando para o formulário de cadastro...");
+        }
+    </script>
 </body>
 </html>

@@ -3,131 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Académico - Iniciar Sessão</title>
+    <title>Atelier Workspace — Autenticação</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- 1. TELA DE LOGIN -->
-    <div id="login-page" class="auth-container">
-        <!-- Coluna Esquerda: Imagem e Identidade Visual -->
-        <div class="auth-banner">
-            <div class="banner-overlay"></div>
-            <div class="banner-content">
-                <div class="brand-logo">
-                    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <span>Académico</span>
+    <!-- TELA DE LOGIN PRINCIPAL -->
+    <main id="login-page" class="atelier-layout">
+        
+        <!-- Lado Esquerdo: Imagem com Direção de Arte Exclusiva e Humana -->
+        <div class="atelier-visual-panel">
+            <div class="artistic-overlay"></div>
+            <div class="visual-content-wrapper">
+                <div class="brand-signature">
+                    <span class="dot-indicator"></span>
+                    <span>Atelier & Co. Ecosystem</span>
                 </div>
-                <div class="banner-text">
-                    <span class="badge-system">SISTEMA ACADÉMICO INTEGRADO</span>
-                    <h1>Tecnologia e inovação num único ambiente.</h1>
-                    <p>Aceda à sua conta para acompanhar conteúdos, progresso académico e informações da plataforma em tempo real.</p>
+                <div class="hero-quote-box">
+                    <span class="sub-tag">ESPAÇO DE CRIAÇÃO E PERFORMANCE</span>
+                    <h1>Onde a precisão técnica encontra a sensibilidade humana.</h1>
+                    <p>Um ambiente pensado por pessoas, para pessoas que moldam o futuro todos os dias. Entre no seu espaço de trabalho.</p>
+                </div>
+                <div class="curator-info">
+                    <div class="curator-avatar">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Curadora do projeto">
+                    </div>
+                    <div>
+                        <span class="curator-name">Sofia Mendes</span>
+                        <span class="curator-role">Diretora de Experiência e Design</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Coluna Direita: Cartão de Autenticação -->
-        <div class="auth-form-section">
-            <div class="auth-card">
-                <div class="card-header">
-                    <h2>Bem-vindo de volta</h2>
-                    <p>Insira as suas credenciais para aceder ao sistema.</p>
+        <!-- Lado Direito: Cartão de Autenticação Minimalista e Humano -->
+        <div class="atelier-form-panel">
+            <div class="form-container-box">
+                <div class="form-header-group">
+                    <h2>Bom ver você por aqui.</h2>
+                    <p>Insira suas credenciais para retomar de onde parou.</p>
                 </div>
 
-                <form id="login-form">
-                    <div class="input-block">
-                        <label for="email">Endereço de E-mail</label>
-                        <div class="input-field-wrapper">
+                <form id="login-form" class="atelier-form">
+                    <div class="form-field-group">
+                        <label for="email">E-mail Pessoal ou Corporativo</label>
+                        <div class="input-control">
                             <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email" placeholder="nome@exemplo.com" required value="estudante@ficr.edu.pt">
+                            <input type="email" id="email" placeholder="voce@exemplo.com" required value="sofia.mendes@atelier.co">
                         </div>
                     </div>
 
-                    <div class="input-block">
-                        <div class="label-row">
-                            <label for="senha">Palavra-passe</label>
-                            <a href="#" class="forgot-link">Esqueceu-se?</a>
+                    <div class="form-field-group">
+                        <div class="label-flex">
+                            <label for="senha">Sua Senha</label>
+                            <a href="#" id="open-forgot-modal" class="text-link">Esqueceu? Recuperar</a>
                         </div>
-                        <div class="input-field-wrapper">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="senha" placeholder="••••••••" required value="12345678">
-                            <i class="fa-regular fa-eye toggle-pwd" id="toggle-password"></i>
+                        <div class="input-control">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="senha" placeholder="••••••••••••" required value="Atelier2026*">
+                            <i class="fa-regular fa-eye toggle-password-icon" id="toggle-pwd"></i>
                         </div>
                     </div>
 
-                    <div class="form-options">
-                        <label class="custom-checkbox">
+                    <div class="form-options-row">
+                        <label class="checkbox-wrapper">
                             <input type="checkbox" checked>
-                            <span class="checkmark"></span>
-                            <span>Lembrar-me neste dispositivo</span>
+                            <span class="checkmark-box"></span>
+                            <span>Lembrar deste computador</span>
                         </label>
                     </div>
 
-                    <button type="submit" class="btn-primary">Entrar na Plataforma</button>
+                    <!-- Botão com estado interativo otimizado -->
+                    <button type="submit" id="btn-submit" class="btn-atelier-submit">
+                        <span class="btn-text">Entrar no Espaço</span>
+                        <i class="fa-solid fa-arrow-right-long btn-icon"></i>
+                        <i class="fa-solid fa-circle-notch fa-spin btn-spinner" style="display: none;"></i>
+                    </button>
 
-                    <div class="card-footer">
-                        Não tem uma conta associada? <a href="#">Solicitar acesso</a>
+                    <div class="support-help-text">
+                        Com alguma dificuldade de acesso? <a href="#" class="text-link">Fale com o suporte humano</a>
                     </div>
                 </form>
             </div>
         </div>
+    </main>
+
+    <!-- MODAL DE RECUPERAÇÃO DE SENHA -->
+    <div id="forgot-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-icon-header">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3>Recuperação de Acesso</h3>
+            <p>Não se preocupe, isso acontece com os melhores. Digite seu e-mail e enviaremos um link carinhoso para redefinir sua senha.</p>
+            
+            <form id="recovery-form">
+                <div class="form-field-group">
+                    <div class="input-control">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="close-forgot-modal" class="btn-secondary">Voltar</button>
+                    <button type="submit" class="btn-atelier-submit">Enviar Instruções</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- 2. PÁGINA INTERNA / DASHBOARD -->
+    <!-- PÁGINA INTERNA / DASHBOARD EXCLUSIVO -->
     <div id="dashboard-page" class="dashboard-container" style="display: none;">
-        <header class="dashboard-header">
-            <div class="dash-brand">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>Portal Académico</span>
+        <header class="atelier-header">
+            <div class="dash-brand-area">
+                <span class="dot-indicator-sm"></span>
+                <span>Atelier Workspace</span>
             </div>
-            <button class="btn-logout" id="btn-sair">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i> Terminar Sessão
-            </button>
+            <div class="user-profile-actions">
+                <span class="user-status-pill"><i class="fa-solid fa-sparkles"></i> Sessão Autêntica Ativa</span>
+                <button class="btn-signout" id="btn-sair">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sair da Sessão
+                </button>
+            </div>
         </header>
-        <main class="dashboard-main">
-            <div class="welcome-banner-card">
-                <div class="welcome-text">
-                    <h2>Painel do Aluno</h2>
-                    <p>Autenticação efetuada com sucesso. Bem-vindo(a) ao seu ambiente virtual de aprendizagem.</p>
+        <main class="dashboard-content-area">
+            <div class="executive-welcome-card">
+                <div class="welcome-titles">
+                    <h2>Olá, que bom ter você de volta.</h2>
+                    <p>Sua área de trabalho está pronta, organizada e sincronizada perfeitamente.</p>
                 </div>
-                <div class="status-badge"><i class="fa-solid fa-circle-check"></i> Sessão Ativa</div>
+                <div class="security-level-tag">
+                    <i class="fa-solid fa-circle-check"></i> Perfil: Criador & Gestor
+                </div>
             </div>
         </main>
     </div>
 
-    <!-- Script de transição de telas -->
+    <!-- Script de Gestão de Estados com Transições Suaves -->
     <script>
         const loginForm = document.getElementById('login-form');
         const loginPage = document.getElementById('login-page');
         const dashboardPage = document.getElementById('dashboard-page');
         const btnSair = document.getElementById('btn-sair');
-        const togglePassword = document.getElementById('toggle-password');
+        const togglePwd = document.getElementById('toggle-pwd');
         const inputSenha = document.getElementById('senha');
+        
+        const btnSubmit = document.getElementById('btn-submit');
+        const btnText = btnSubmit.querySelector('.btn-text');
+        const btnIcon = btnSubmit.querySelector('.btn-icon');
+        const btnSpinner = btnSubmit.querySelector('.btn-spinner');
 
-        // Alternar visibilidade da senha
-        togglePassword.addEventListener('click', () => {
+        const forgotModal = document.getElementById('forgot-modal');
+        const openForgotModal = document.getElementById('open-forgot-modal');
+        const closeForgotModal = document.getElementById('close-forgot-modal');
+        const recoveryForm = document.getElementById('recovery-form');
+
+        togglePwd.addEventListener('click', () => {
             const type = inputSenha.getAttribute('type') === 'password' ? 'text' : 'password';
             inputSenha.setAttribute('type', type);
-            togglePassword.classList.toggle('fa-eye-slash');
+            togglePwd.classList.toggle('fa-eye-slash');
         });
 
-        // Simular login bem-sucedido
+        openForgotModal.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotModal.style.display = 'flex';
+        });
+
+        closeForgotModal.addEventListener('click', () => {
+            forgotModal.style.display = 'none';
+        });
+
+        recoveryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Instruções enviadas! Verifique sua caixa de entrada em instantes.');
+            forgotModal.style.display = 'none';
+        });
+
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            loginPage.style.opacity = '0';
+            
+            btnSubmit.disabled = true;
+            btnText.textContent = "Preparando seu espaço...";
+            btnIcon.style.display = 'none';
+            btnSpinner.style.display = 'inline-block';
+
             setTimeout(() => {
-                loginPage.style.display = 'none';
-                dashboardPage.style.display = 'flex';
-                dashboardPage.style.opacity = '1';
-            }, 300);
+                loginPage.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    loginPage.style.display = 'none';
+                    dashboardPage.style.display = 'flex';
+                    dashboardPage.classList.add('fade-in');
+                    
+                    btnSubmit.disabled = false;
+                    btnText.textContent = "Entrar no Espaço";
+                    btnIcon.style.display = 'inline-block';
+                    btnSpinner.style.display = 'none';
+                }, 400);
+            }, 1000);
         });
 
-        // Simular término de sessão
         btnSair.addEventListener('click', () => {
+            dashboardPage.classList.remove('fade-in');
             dashboardPage.style.display = 'none';
+            
             loginPage.style.display = 'flex';
-            setTimeout(() => { loginPage.style.opacity = '1'; }, 50);
+            loginPage.classList.remove('fade-out');
+            loginPage.classList.add('fade-in');
         });
     </script>
 </body>

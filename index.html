@@ -1,217 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atelier Workspace — Autenticação</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Acadêmico - Login</title>
+  <!-- Ícones do FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Arquivo de Estilo CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- TELA DE LOGIN PRINCIPAL -->
-    <main id="login-page" class="atelier-layout">
-        
-        <!-- Lado Esquerdo: Imagem com Direção de Arte Exclusiva e Humana -->
-        <div class="atelier-visual-panel">
-            <div class="artistic-overlay"></div>
-            <div class="visual-content-wrapper">
-                <div class="brand-signature">
-                    <span class="dot-indicator"></span>
-                    <span>Atelier & Co. Ecosystem</span>
-                </div>
-                <div class="hero-quote-box">
-                    <span class="sub-tag">ESPAÇO DE CRIAÇÃO E PERFORMANCE</span>
-                    <h1>Onde a precisão técnica encontra a sensibilidade humana.</h1>
-                    <p>Um ambiente pensado por pessoas, para pessoas que moldam o futuro todos os dias. Entre no seu espaço de trabalho.</p>
-                </div>
-                <div class="curator-info">
-                    <div class="curator-avatar">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Curadora do projeto">
-                    </div>
-                    <div>
-                        <span class="curator-name">Sofia Mendes</span>
-                        <span class="curator-role">Diretora de Experiência e Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="page-wrapper">
+    
+    <!-- LADO ESQUERDO: Imagem com Overlay e Texto -->
+    <div class="left-banner">
+      <div class="banner-overlay"></div>
+      
+      <!-- Marca/Logo no topo superior esquerdo -->
+      <div class="top-brand">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>Acadêmico</span>
+      </div>
 
-        <!-- Lado Direito: Cartão de Autenticação Minimalista e Humano -->
-        <div class="atelier-form-panel">
-            <div class="form-container-box">
-                <div class="form-header-group">
-                    <h2>Bom ver você por aqui.</h2>
-                    <p>Insira suas credenciais para retomar de onde parou.</p>
-                </div>
-
-                <form id="login-form" class="atelier-form">
-                    <div class="form-field-group">
-                        <label for="email">E-mail Pessoal ou Corporativo</label>
-                        <div class="input-control">
-                            <i class="fa-regular fa-envelope"></i>
-                            <input type="email" id="email" placeholder="voce@exemplo.com" required value="sofia.mendes@atelier.co">
-                        </div>
-                    </div>
-
-                    <div class="form-field-group">
-                        <div class="label-flex">
-                            <label for="senha">Sua Senha</label>
-                            <a href="#" id="open-forgot-modal" class="text-link">Esqueceu? Recuperar</a>
-                        </div>
-                        <div class="input-control">
-                            <i class="fa-solid fa-key"></i>
-                            <input type="password" id="senha" placeholder="••••••••••••" required value="Atelier2026*">
-                            <i class="fa-regular fa-eye toggle-password-icon" id="toggle-pwd"></i>
-                        </div>
-                    </div>
-
-                    <div class="form-options-row">
-                        <label class="checkbox-wrapper">
-                            <input type="checkbox" checked>
-                            <span class="checkmark-box"></span>
-                            <span>Lembrar deste computador</span>
-                        </label>
-                    </div>
-
-                    <!-- Botão com estado interativo otimizado -->
-                    <button type="submit" id="btn-submit" class="btn-atelier-submit">
-                        <span class="btn-text">Entrar no Espaço</span>
-                        <i class="fa-solid fa-arrow-right-long btn-icon"></i>
-                        <i class="fa-solid fa-circle-notch fa-spin btn-spinner" style="display: none;"></i>
-                    </button>
-
-                    <div class="support-help-text">
-                        Com alguma dificuldade de acesso? <a href="#" class="text-link">Fale com o suporte humano</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </main>
-
-    <!-- MODAL DE RECUPERAÇÃO DE SENHA -->
-    <div id="forgot-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-card">
-            <div class="modal-icon-header">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-            <h3>Recuperação de Acesso</h3>
-            <p>Não se preocupe, isso acontece com os melhores. Digite seu e-mail e enviaremos um link carinhoso para redefinir sua senha.</p>
-            
-            <form id="recovery-form">
-                <div class="form-field-group">
-                    <div class="input-control">
-                        <i class="fa-regular fa-envelope"></i>
-                        <input type="email" placeholder="seu.email@exemplo.com" required>
-                    </div>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" id="close-forgot-modal" class="btn-secondary">Voltar</button>
-                    <button type="submit" class="btn-atelier-submit">Enviar Instruções</button>
-                </div>
-            </form>
-        </div>
+      <!-- Informações no canto inferior esquerdo (sobre a imagem) -->
+      <div class="bottom-content">
+        <p class="tagline">SISTEMA ACADÊMICO</p>
+        <h1 class="main-title">Tecnologia e informação em um único ambiente.</h1>
+        <p class="description">
+          Acesse sua conta para acompanhar conteúdos, atividades e informações da plataforma.
+        </p>
+      </div>
     </div>
 
-    <!-- PÁGINA INTERNA / DASHBOARD EXCLUSIVO -->
-    <div id="dashboard-page" class="dashboard-container" style="display: none;">
-        <header class="atelier-header">
-            <div class="dash-brand-area">
-                <span class="dot-indicator-sm"></span>
-                <span>Atelier Workspace</span>
+    <!-- LADO DIREITO: Painel de Login -->
+    <div class="right-panel">
+      
+      <!-- Card Centralizado de Login -->
+      <div class="login-card">
+        <div class="card-header">
+          <h2>Bem-vindo novamente</h2>
+          <p>Informe seus dados para acessar o sistema.</p>
+        </div>
+
+        <form class="login-form">
+          <!-- Campo E-mail -->
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-envelope input-icon"></i>
+              <input type="email" id="email" placeholder="Digite seu e-mail" required>
             </div>
-            <div class="user-profile-actions">
-                <span class="user-status-pill"><i class="fa-solid fa-sparkles"></i> Sessão Autêntica Ativa</span>
-                <button class="btn-signout" id="btn-sair">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sair da Sessão
-                </button>
+          </div>
+
+          <!-- Campo Senha -->
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="password" placeholder="Digite sua senha" required>
+              <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
             </div>
-        </header>
-        <main class="dashboard-content-area">
-            <div class="executive-welcome-card">
-                <div class="welcome-titles">
-                    <h2>Olá, que bom ter você de volta.</h2>
-                    <p>Sua área de trabalho está pronta, organizada e sincronizada perfeitamente.</p>
-                </div>
-                <div class="security-level-tag">
-                    <i class="fa-solid fa-circle-check"></i> Perfil: Criador & Gestor
-                </div>
-            </div>
-        </main>
+          </div>
+
+          <!-- Opções: Lembrar de mim & Esqueci minha senha -->
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox">
+              <span>Lembrar de mim</span>
+            </label>
+            <a href="#" class="forgot-password">Esqueci minha senha</a>
+          </div>
+
+          <!-- Botão Entrar -->
+          <button type="submit" class="btn-submit">Entrar</button>
+        </form>
+
+        <!-- Footer do Card -->
+        <div class="card-footer">
+          Ainda não possui uma conta? <a href="#">Criar conta</a>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Script de Gestão de Estados com Transições Suaves -->
-    <script>
-        const loginForm = document.getElementById('login-form');
-        const loginPage = document.getElementById('login-page');
-        const dashboardPage = document.getElementById('dashboard-page');
-        const btnSair = document.getElementById('btn-sair');
-        const togglePwd = document.getElementById('toggle-pwd');
-        const inputSenha = document.getElementById('senha');
-        
-        const btnSubmit = document.getElementById('btn-submit');
-        const btnText = btnSubmit.querySelector('.btn-text');
-        const btnIcon = btnSubmit.querySelector('.btn-icon');
-        const btnSpinner = btnSubmit.querySelector('.btn-spinner');
+  </div>
 
-        const forgotModal = document.getElementById('forgot-modal');
-        const openForgotModal = document.getElementById('open-forgot-modal');
-        const closeForgotModal = document.getElementById('close-forgot-modal');
-        const recoveryForm = document.getElementById('recovery-form');
+  <!-- Script básico para alternar visibilidade da senha -->
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
 
-        togglePwd.addEventListener('click', () => {
-            const type = inputSenha.getAttribute('type') === 'password' ? 'text' : 'password';
-            inputSenha.setAttribute('type', type);
-            togglePwd.classList.toggle('fa-eye-slash');
-        });
-
-        openForgotModal.addEventListener('click', (e) => {
-            e.preventDefault();
-            forgotModal.style.display = 'flex';
-        });
-
-        closeForgotModal.addEventListener('click', () => {
-            forgotModal.style.display = 'none';
-        });
-
-        recoveryForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Instruções enviadas! Verifique sua caixa de entrada em instantes.');
-            forgotModal.style.display = 'none';
-        });
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            btnSubmit.disabled = true;
-            btnText.textContent = "Preparando seu espaço...";
-            btnIcon.style.display = 'none';
-            btnSpinner.style.display = 'inline-block';
-
-            setTimeout(() => {
-                loginPage.classList.add('fade-out');
-                
-                setTimeout(() => {
-                    loginPage.style.display = 'none';
-                    dashboardPage.style.display = 'flex';
-                    dashboardPage.classList.add('fade-in');
-                    
-                    btnSubmit.disabled = false;
-                    btnText.textContent = "Entrar no Espaço";
-                    btnIcon.style.display = 'inline-block';
-                    btnSpinner.style.display = 'none';
-                }, 400);
-            }, 1000);
-        });
-
-        btnSair.addEventListener('click', () => {
-            dashboardPage.classList.remove('fade-in');
-            dashboardPage.style.display = 'none';
-            
-            loginPage.style.display = 'flex';
-            loginPage.classList.remove('fade-out');
-            loginPage.classList.add('fade-in');
-        });
-    </script>
+    togglePassword.addEventListener('click', function () {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+  </script>
 </body>
 </html>

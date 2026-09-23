@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar - Acadêmico</title>
+  <title>Entrar - Acadêmico Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { 
       margin: 0; 
@@ -14,19 +14,19 @@
     }
 
     :root {  
-      --blue-600: #2f5fe0;  
-      --blue-700: #1d4ed8;  
-      --blue-50: #eff6ff;  
-      --navy-950: #0a1224;  
-      --navy-800: #1e293b;  
-      --ink: #0f172a;  
-      --slate-500: #64748b;  
-      --slate-300: #cbd5e1;  
-      --slate-200: #e2e8f0;  
-      --surface: #f8fafc;  
-      --white: #ffffff;
+      /* Paleta High-Tech & Cyber Neon */
+      --tech-bg: #030712;
+      --tech-panel: rgba(15, 23, 42, 0.85);
+      --cyan-neon: #00f0ff;
+      --purple-neon: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      --glow-cyan: rgba(0, 240, 255, 0.4);
+      --glow-purple: rgba(139, 92, 246, 0.4);
+
       --radius-md: 10px;
-      --radius-lg: 16px;
+      --radius-lg: 20px;
       --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -36,8 +36,8 @@
 
     body {  
       font-family: 'Inter', sans-serif;  
-      color: var(--ink);  
-      background-color: var(--surface);
+      color: var(--text-main);  
+      background-color: var(--tech-bg);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -47,7 +47,7 @@
       width: 100%;
     }
 
-    /* ===== PAINEL ESQUERDO COM A IMAGEM ===== */
+    /* ===== PAINEL ESQUERDO COM IMAGEM DE FUNDO E TEXTOS LEGÍVEIS ===== */
     .left-panel {  
       position: relative;  
       flex: 0 0 46%;  
@@ -57,24 +57,35 @@
       padding: 4rem 3.5rem;  
       overflow: hidden;  
       
-      /* Imagem de Fundo com Degradê Escuro Integrado */
-      background: 
-        linear-gradient(135deg, rgba(10, 18, 36, 0.85) 0%, rgba(15, 23, 42, 0.65) 100%),
-        url('data:image/png;base64,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');
+      /* Substitua 'imagem-fundo.jpg' pelo nome correto do arquivo de imagem na sua pasta */
+      background-image: 
+        linear-gradient(135deg, rgba(3, 7, 18, 0.85) 0%, rgba(15, 23, 42, 0.70) 50%, rgba(139, 92, 246, 0.35) 100%),
+        url('imagem-fundo.jpg');
       background-size: cover;
       background-position: center;
-      color: var(--white);
+      background-repeat: no-repeat;
+      color: #ffffff;
     }
 
-    /* Cartão Flutuante Translúcido sobre a Imagem */
     .left-panel-card {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(3, 7, 18, 0.75);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(0, 240, 255, 0.3);
       border-radius: var(--radius-lg);
       padding: 2.5rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    .left-panel-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
     }
 
     .brand-header {
@@ -87,20 +98,23 @@
     .brand-icon {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--blue-600), #6085ef);
+      background: linear-gradient(135deg, var(--purple-neon), var(--cyan-neon));
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-size: 1.35rem;
-      box-shadow: 0 8px 16px rgba(47, 95, 224, 0.35);
+      color: #ffffff;
+      box-shadow: 0 0 15px var(--glow-cyan);
     }
 
     .brand-name {
       font-weight: 700;
       font-size: 1.35rem;
       letter-spacing: -0.02em;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .hero-title {
@@ -109,27 +123,33 @@
       line-height: 1.2;
       letter-spacing: -0.03em;
       margin-bottom: 1rem;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
 
     .hero-title span {
-      background: linear-gradient(90deg, #93c5fd, #60a5fa);
+      background: linear-gradient(90deg, var(--cyan-neon), #38bdf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px var(--glow-cyan));
     }
 
     .hero-description {
       font-size: 1rem;
       line-height: 1.6;
-      color: var(--slate-300);
+      color: #e2e8f0;
       font-weight: 400;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
     }
 
     .brand-footer {
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.7);
+      font-family: 'JetBrains Mono', monospace;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
     }
 
-    /* ===== PAINEL DIREITO: FORMULÁRIO DE LOGIN ===== */
+    /* ===== PAINEL DIREITO: FORMULÁRIO CYBER ===== */
     .right-panel {  
       flex: 1;  
       display: flex;  
@@ -137,34 +157,64 @@
       justify-content: center;  
       align-items: center;  
       padding: 3rem 2rem;  
-      background-color: var(--surface);
+      background-color: var(--tech-bg);
+      background-image: 
+        radial-gradient(circle at 85% 15%, rgba(0, 240, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 15% 85%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
     }
 
     .form-wrapper {
       width: 100%;
       max-width: 420px;
-      background: var(--white);
+      background: var(--tech-panel);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       padding: 2.5rem;
       border-radius: var(--radius-lg);
-      border: 1px solid var(--slate-200);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    .form-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 10%;
+      width: 40%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple-neon), transparent);
     }
 
     .form-header {
       margin-bottom: 2rem;
     }
 
+    .badge-tech {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan-neon);
+      background: rgba(0, 240, 255, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      margin-bottom: 0.75rem;
+    }
+
     .form-title {
       font-size: 1.75rem;
       font-weight: 800;
-      color: var(--navy-950);
+      color: #ffffff;
       letter-spacing: -0.025em;
       margin-bottom: 0.375rem;
     }
 
     .form-subtitle {
       font-size: 0.9rem;
-      color: var(--slate-500);
+      color: var(--text-muted);
     }
 
     .login-form {
@@ -180,12 +230,12 @@
     }
 
     .input-group label {
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       font-weight: 600;
-      color: var(--navy-800);
+      color: #cbd5e1;
+      letter-spacing: 0.02em;
     }
 
-    /* Campo de Entrada com Ícones e Efeitos CSS3 */
     .input-wrapper {
       position: relative;
       display: flex;
@@ -197,7 +247,7 @@
       left: 1rem;
       width: 20px;
       height: 20px;
-      color: var(--slate-500);
+      color: var(--text-muted);
       pointer-events: none;
       transition: var(--transition);
     }
@@ -207,38 +257,36 @@
       padding: 0.875rem 1rem 0.875rem 2.85rem;
       font-family: inherit;
       font-size: 0.95rem;
-      color: var(--ink);
-      background-color: var(--surface);
-      border: 1.5px solid var(--slate-200);
+      color: #ffffff;
+      background-color: rgba(3, 7, 18, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-md);
       outline: none;
       transition: var(--transition);
     }
 
     .input-field::placeholder {
-      color: var(--slate-500);
-      opacity: 0.6;
+      color: #475569;
     }
 
-    /* Animação e Foco no Input */
     .input-field:focus {
-      background-color: var(--white);
-      border-color: var(--blue-600);
-      box-shadow: 0 0 0 4px var(--blue-50);
+      background-color: rgba(3, 7, 18, 0.95);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 15px var(--glow-cyan);
     }
 
     .input-field:focus + .input-icon,
     .input-wrapper:focus-within .input-icon {
-      color: var(--blue-600);
+      color: var(--cyan-neon);
+      filter: drop-shadow(0 0 5px var(--cyan-neon));
     }
 
-    /* Botão de Mostrar/Ocultar Senha */
     .toggle-password {
       position: absolute;
       right: 0.875rem;
       background: none;
       border: none;
-      color: var(--slate-500);
+      color: var(--text-muted);
       cursor: pointer;
       padding: 0.25rem;
       display: flex;
@@ -249,8 +297,7 @@
     }
 
     .toggle-password:hover {
-      color: var(--ink);
-      background: var(--slate-200);
+      color: var(--cyan-neon);
     }
 
     .form-options {
@@ -269,59 +316,59 @@
     }
 
     .remember-me input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--blue-600);
+      width: 16px;
+      height: 16px;
+      accent-color: var(--cyan-neon);
       border-radius: 4px;
       cursor: pointer;
     }
 
     .remember-me span {
       font-size: 0.85rem;
-      color: var(--slate-500);
+      color: var(--text-muted);
       font-weight: 500;
     }
 
     .forgot-link {
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--blue-600);
+      color: var(--cyan-neon);
       text-decoration: none;
       transition: var(--transition);
     }
 
     .forgot-link:hover {
-      color: var(--blue-700);
-      text-decoration: underline;
+      color: #ffffff;
+      text-shadow: 0 0 8px var(--glow-cyan);
     }
 
-    /* Botão de Envio Estilizado */
     .submit-btn {
       width: 100%;
       padding: 0.875rem;
       margin-top: 0.5rem;
       font-family: inherit;
       font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--white);
-      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+      font-weight: 700;
+      color: #030712;
+      background: linear-gradient(90deg, var(--cyan-neon), #38bdf8);
       border: none;
       border-radius: var(--radius-md);
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 4px 12px rgba(47, 95, 224, 0.25);
+      box-shadow: 0 0 20px var(--glow-cyan);
+      letter-spacing: 0.02em;
     }
 
     .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(47, 95, 224, 0.35);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
+      background: linear-gradient(90deg, #38bdf8, var(--cyan-neon));
     }
 
     .submit-btn:active {
       transform: translateY(0);
     }
 
-    /* ===== RESPONSIVIDADE ===== */
     @media (max-width: 900px) {
       .left-panel {
         display: none;
@@ -341,7 +388,6 @@
 <body>
 
   <div class="login-page">
-    <!-- PAINEL ESQUERDO: BRANDING & IMAGEM DE FUNDO -->
     <aside class="left-panel">
       <div class="left-panel-card">
         <div class="brand-header">
@@ -352,26 +398,25 @@
         <div class="hero-content">
           <h1 class="hero-title">Sua jornada acadêmica em <span>um só lugar</span>.</h1>
           <p class="hero-description">
-            Acesse notas, materiais de aula e acompanhe seu progresso educacional com segurança e facilidade.
+            Acesse notas, materiais de aula e acompanhe seu progresso educacional com segurança e inteligência.
           </p>
         </div>
       </div>
 
       <div class="brand-footer">
-        &copy; Portal Acadêmico. Todos os direitos reservados.
+        SYS.VER // 2.0.26
       </div>
     </aside>
 
-    <!-- PAINEL DIREITO: FORMULÁRIO DE AUTENTICAÇÃO -->
     <main class="right-panel">
       <div class="form-wrapper">
         <header class="form-header">
-          <h2 class="form-title">Acesse sua conta</h2>
-          <p class="form-subtitle">Informe suas credenciais para continuar</p>
+          <span class="badge-tech">Acesso Restrito</span>
+          <h2 class="form-title">Autenticação</h2>
+          <p class="form-subtitle">Digite suas credenciais de acesso</p>
         </header>
 
         <form class="login-form" action="#" method="POST">
-          <!-- Campo de E-mail/Matrícula -->
           <div class="input-group">
             <label for="email">E-mail ou Matrícula</label>
             <div class="input-wrapper">
@@ -383,16 +428,15 @@
                 id="email" 
                 name="email" 
                 class="input-field" 
-                placeholder="exemplo@instituicao.edu.br" 
+                placeholder="usuario@instituicao.edu.br" 
                 required
                 autocomplete="username"
               >
             </div>
           </div>
 
-          <!-- Campo de Senha -->
           <div class="input-group">
-            <label for="password">Senha</label>
+            <label for="password">Senha de Acesso</label>
             <div class="input-wrapper">
               <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -423,14 +467,13 @@
             <a href="#" class="forgot-link">Esqueceu a senha?</a>
           </div>
 
-          <button type="submit" class="submit-btn">Entrar na plataforma</button>
+          <button type="submit" class="submit-btn">Acessar Sistema</button>
         </form>
       </div>
     </main>
   </div>
 
   <script>
-    // Alternar visibilidade da senha
     const togglePasswordBtn = document.getElementById('togglePassword');
     const passwordInput = document.getElementById('password');
 

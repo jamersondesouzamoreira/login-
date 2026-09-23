@@ -1,220 +1,221 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar - Acadêmico Tech</title>
+  <title>Acesso ao Sistema - HUD Cyber</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    :root {  
-      /* Paleta High-Tech & Cyber Neon */
-      --tech-bg: #030712;
-      --tech-panel: rgba(15, 23, 42, 0.85);
+    :root {
+      /* Paleta HUD / Cyberpunk */
+      --cyber-bg: #030811;
       --cyan-neon: #00f0ff;
-      --purple-neon: #8b5cf6;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      
-      --glow-cyan: rgba(0, 240, 255, 0.4);
-      --glow-purple: rgba(139, 92, 246, 0.4);
-
-      --radius-md: 10px;
-      --radius-lg: 20px;
-      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --cyan-glow: rgba(0, 240, 255, 0.4);
+      --hud-panel-bg: rgba(6, 20, 38, 0.75);
+      --hud-border: rgba(0, 240, 255, 0.35);
+      --text-main: #e2f1f8;
+      --text-muted: #648299;
+      --radius-container: 16px;
+      --radius-btn: 6px;
     }
 
-    html, body { 
-      height: 100%; 
-    }
-
-    body {  
-      font-family: 'Inter', sans-serif;  
-      color: var(--text-main);  
-      background-color: var(--tech-bg);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .login-page {  
-      display: flex;  
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--cyber-bg);
+      color: var(--text-main);
       min-height: 100vh;
-      width: 100%;
-    }
-
-    /* ===== PAINEL ESQUERDO COM IMAGEM DE FUNDO E TEXTOS LEGÍVEIS ===== */
-    .left-panel {  
-      position: relative;  
-      flex: 0 0 46%;  
-      display: flex;  
-      flex-direction: column;  
-      justify-content: space-between;  
-      padding: 4rem 3.5rem;  
-      overflow: hidden;  
-      
-      /* Substitua 'imagem-fundo.jpg' pelo nome correto do arquivo de imagem na sua pasta */
-      background-image: 
-        linear-gradient(135deg, rgba(3, 7, 18, 0.85) 0%, rgba(15, 23, 42, 0.70) 50%, rgba(139, 92, 246, 0.35) 100%),
-        url('imagem-fundo.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-    }
-
-    .left-panel-card {
-      background: rgba(3, 7, 18, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 240, 255, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-      position: relative;
-    }
-
-    .left-panel-card::before {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 10%;
-      width: 80%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
-    }
-
-    .brand-header {
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      margin-bottom: 2rem;
-    }
-
-    .brand-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--purple-neon), var(--cyan-neon));
-      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.35rem;
-      color: #ffffff;
-      box-shadow: 0 0 15px var(--glow-cyan);
+      overflow-x: hidden;
     }
 
-    .brand-name {
+    /* Grid principal em 2 colunas */
+    .login-container {
+      display: flex;
+      width: 100vw;
+      min-height: 100vh;
+      background-color: var(--cyber-bg);
+    }
+
+    /* ===== COLUNA DA ESQUERDA: HUD BACKGROUND PURAMENTE EM CSS ===== */
+    .left-column {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4rem;
+      /* Ilustração Cyber/HUD 100% CSS (Infallible - abre sem precisar de arquivos de imagem) */
+      background: 
+        radial-gradient(circle at 70% 30%, rgba(0, 240, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(3, 8, 17, 0.95) 0%, rgba(6, 20, 38, 0.8) 100%);
+      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px, 100% 100%;
+      border-right: 1px solid var(--hud-border);
+      overflow: hidden;
+    }
+
+    /* Elementos visuais holográficos de fundo no CSS */
+    .left-column::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      border: 1px dashed rgba(0, 240, 255, 0.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Cantos moldados estilo HUD */
+    .left-column::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      border-top: 2px solid var(--cyan-neon);
+      border-left: 2px solid var(--cyan-neon);
+      z-index: 2;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
       font-weight: 700;
-      font-size: 1.35rem;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      color: var(--cyan-neon);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--cyan-glow);
+      z-index: 2;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--cyan-neon);
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .brand-icon span {
+      transform: rotate(-45deg);
+      font-size: 0.8rem;
+    }
+
+    .hero-content {
+      max-width: 520px;
+      background: rgba(3, 8, 17, 0.75);
+      padding: 2.5rem;
+      border-radius: var(--radius-container);
+      border: 1px solid var(--hud-border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+      position: relative;
+      z-index: 2;
     }
 
     .hero-title {
-      font-size: 2.25rem;
-      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
       line-height: 1.2;
-      letter-spacing: -0.03em;
+      text-transform: uppercase;
       margin-bottom: 1rem;
       color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
 
     .hero-title span {
-      background: linear-gradient(90deg, var(--cyan-neon), #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px var(--glow-cyan));
+      color: var(--cyan-neon);
+      text-shadow: 0 0 15px var(--cyan-glow);
     }
 
     .hero-description {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #e2e8f0;
-      font-weight: 400;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      font-size: 1.15rem;
+      color: #b0cddb;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
-    .brand-footer {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
-      font-family: 'JetBrains Mono', monospace;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    .footer-info {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 3px;
+      z-index: 2;
     }
 
-    /* ===== PAINEL DIREITO: FORMULÁRIO CYBER ===== */
-    .right-panel {  
-      flex: 1;  
-      display: flex;  
-      flex-direction: column;  
-      justify-content: center;  
-      align-items: center;  
-      padding: 3rem 2rem;  
-      background-color: var(--tech-bg);
-      background-image: 
-        radial-gradient(circle at 85% 15%, rgba(0, 240, 255, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 15% 85%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+    /* ===== COLUNA DA DIREITA: CARD REUTILIZÁVEL DE LOGIN ===== */
+    .right-column {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: radial-gradient(circle at center, rgba(6, 20, 38, 0.8) 0%, var(--cyber-bg) 100%);
     }
 
-    .form-wrapper {
+    .login-card {
       width: 100%;
-      max-width: 420px;
-      background: var(--tech-panel);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 2.5rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      max-width: 440px;
+      background: var(--hud-panel-bg);
+      border: 1px solid var(--hud-border);
+      border-radius: var(--radius-container);
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(0, 240, 255, 0.05);
       position: relative;
     }
 
-    .form-wrapper::after {
+    .login-card::after {
       content: '';
       position: absolute;
       bottom: -1px;
-      right: 10%;
-      width: 40%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--purple-neon), transparent);
+      right: -1px;
+      width: 30px;
+      height: 30px;
+      border-bottom: 2px solid var(--cyan-neon);
+      border-right: 2px solid var(--cyan-neon);
     }
 
-    .form-header {
+    .card-header {
       margin-bottom: 2rem;
     }
 
-    .badge-tech {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cyan-neon);
-      background: rgba(0, 240, 255, 0.1);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      border: 1px solid rgba(0, 240, 255, 0.25);
-      margin-bottom: 0.75rem;
-    }
-
-    .form-title {
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
       font-size: 1.75rem;
-      font-weight: 800;
+      font-weight: 700;
       color: #ffffff;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.375rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
     }
 
-    .form-subtitle {
-      font-size: 0.9rem;
+    .card-subtitle {
+      font-size: 1rem;
       color: var(--text-muted);
+      font-weight: 600;
     }
 
     .login-form {
@@ -223,264 +224,186 @@
       gap: 1.25rem;
     }
 
-    .input-group {
+    .form-group {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
 
-    .input-group label {
-      font-size: 0.825rem;
-      font-weight: 600;
-      color: #cbd5e1;
-      letter-spacing: 0.02em;
+    .form-group label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--cyan-neon);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
     .input-wrapper {
       position: relative;
-      display: flex;
-      align-items: center;
     }
 
-    .input-icon {
-      position: absolute;
-      left: 1rem;
-      width: 20px;
-      height: 20px;
-      color: var(--text-muted);
-      pointer-events: none;
-      transition: var(--transition);
-    }
-
-    .input-field {
+    .input-wrapper input {
       width: 100%;
-      padding: 0.875rem 1rem 0.875rem 2.85rem;
-      font-family: inherit;
-      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      background: rgba(3, 8, 17, 0.8);
+      border: 1px solid var(--hud-border);
+      border-radius: var(--radius-btn);
       color: #ffffff;
-      background-color: rgba(3, 7, 18, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius-md);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
       outline: none;
-      transition: var(--transition);
+      transition: all 0.3s ease;
     }
 
-    .input-field::placeholder {
-      color: #475569;
-    }
-
-    .input-field:focus {
-      background-color: rgba(3, 7, 18, 0.95);
+    .input-wrapper input:focus {
       border-color: var(--cyan-neon);
-      box-shadow: 0 0 15px var(--glow-cyan);
-    }
-
-    .input-field:focus + .input-icon,
-    .input-wrapper:focus-within .input-icon {
-      color: var(--cyan-neon);
-      filter: drop-shadow(0 0 5px var(--cyan-neon));
-    }
-
-    .toggle-password {
-      position: absolute;
-      right: 0.875rem;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 0.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      transition: var(--transition);
-    }
-
-    .toggle-password:hover {
-      color: var(--cyan-neon);
+      box-shadow: 0 0 12px var(--cyan-glow);
+      background: rgba(3, 8, 17, 0.95);
     }
 
     .form-options {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-top: 0.25rem;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
-    .remember-me {
+    .checkbox-container {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       cursor: pointer;
-      user-select: none;
-    }
-
-    .remember-me input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--cyan-neon);
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .remember-me span {
-      font-size: 0.85rem;
       color: var(--text-muted);
-      font-weight: 500;
+    }
+
+    .checkbox-container input {
+      accent-color: var(--cyan-neon);
     }
 
     .forgot-link {
-      font-size: 0.85rem;
-      font-weight: 600;
       color: var(--cyan-neon);
       text-decoration: none;
-      transition: var(--transition);
+      transition: all 0.2s;
     }
 
     .forgot-link:hover {
-      color: #ffffff;
-      text-shadow: 0 0 8px var(--glow-cyan);
+      text-shadow: 0 0 8px var(--cyan-glow);
     }
 
-    .submit-btn {
+    .btn-cyber {
       width: 100%;
-      padding: 0.875rem;
+      padding: 0.9rem;
       margin-top: 0.5rem;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #030712;
-      background: linear-gradient(90deg, var(--cyan-neon), #38bdf8);
+      background: var(--cyan-neon);
       border: none;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-btn);
+      color: var(--cyber-bg);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 0 20px var(--glow-cyan);
-      letter-spacing: 0.02em;
+      box-shadow: 0 0 20px var(--cyan-glow);
+      transition: all 0.3s ease;
     }
 
-    .submit-btn:hover {
+    .btn-cyber:hover {
+      background: #ffffff;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
       transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
-      background: linear-gradient(90deg, #38bdf8, var(--cyan-neon));
     }
 
-    .submit-btn:active {
-      transform: translateY(0);
+    .signup-text {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
     }
 
-    @media (max-width: 900px) {
-      .left-panel {
+    .signup-text a {
+      color: var(--cyan-neon);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 960px) {
+      .login-container {
+        flex-direction: column;
+      }
+      .left-column {
         display: none;
       }
-      .right-panel {
-        padding: 1.5rem;
-      }
-      .form-wrapper {
-        border: none;
-        box-shadow: none;
-        padding: 1rem;
-        background: transparent;
+      .right-column {
+        min-height: 100vh;
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="login-page">
-    <aside class="left-panel">
-      <div class="left-panel-card">
-        <div class="brand-header">
-          <div class="brand-icon">A</div>
-          <span class="brand-name">Acadêmico</span>
-        </div>
-
-        <div class="hero-content">
-          <h1 class="hero-title">Sua jornada acadêmica em <span>um só lugar</span>.</h1>
-          <p class="hero-description">
-            Acesse notas, materiais de aula e acompanhe seu progresso educacional com segurança e inteligência.
-          </p>
-        </div>
+  <div class="login-container">
+    <!-- Coluna da Esquerda (Design HUD/Cyberpunk) -->
+    <aside class="left-column">
+      <div class="brand-logo">
+        <div class="brand-icon"><span>H</span></div>
+        <span>HUD System</span>
       </div>
 
-      <div class="brand-footer">
-        SYS.VER // 2.0.26
+      <div class="hero-content">
+        <h1 class="hero-title">Tecnologia e Informação em <span>Um Único Ambiente</span>.</h1>
+        <p class="hero-description">
+          Aceda à sua conta para acompanhar dados, métricas e análises em tempo real na interface holográfica.
+        </p>
+      </div>
+
+      <div class="footer-info">
+        SYS.LOC // SECURE_NODE_01
       </div>
     </aside>
 
-    <main class="right-panel">
-      <div class="form-wrapper">
-        <header class="form-header">
-          <span class="badge-tech">Acesso Restrito</span>
-          <h2 class="form-title">Autenticação</h2>
-          <p class="form-subtitle">Digite suas credenciais de acesso</p>
+    <!-- Coluna da Direita (Card Reutilizável de Login) -->
+    <main class="right-column">
+      <div class="login-card">
+        <header class="card-header">
+          <h2 class="card-title">Bem-vindo novamente</h2>
+          <p class="card-subtitle">Informe os seus dados para aceder ao sistema.</p>
         </header>
 
-        <form class="login-form" action="#" method="POST">
-          <div class="input-group">
-            <label for="email">E-mail ou Matrícula</label>
+        <form class="login-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="email">E-mail</label>
             <div class="input-wrapper">
-              <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-              </svg>
-              <input 
-                type="text" 
-                id="email" 
-                name="email" 
-                class="input-field" 
-                placeholder="usuario@instituicao.edu.br" 
-                required
-                autocomplete="username"
-              >
+              <input type="email" id="email" placeholder="Digite o seu e-mail" required>
             </div>
           </div>
 
-          <div class="input-group">
-            <label for="password">Senha de Acesso</label>
+          <div class="form-group">
+            <label for="password">Senha</label>
             <div class="input-wrapper">
-              <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              <input 
-                type="password" 
-                id="password" 
-                name="password" 
-                class="input-field" 
-                placeholder="••••••••" 
-                required
-                autocomplete="current-password"
-              >
-              <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostrar senha">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </button>
+              <input type="password" id="password" placeholder="Digite a sua senha" required>
             </div>
           </div>
 
           <div class="form-options">
-            <label class="remember-me">
-              <input type="checkbox" name="remember">
-              <span>Lembrar-me</span>
+            <label class="checkbox-container">
+              <input type="checkbox">
+              Lembrar de mim
             </label>
-            <a href="#" class="forgot-link">Esqueceu a senha?</a>
+            <a href="#" class="forgot-link">Esqueci a minha senha</a>
           </div>
 
-          <button type="submit" class="submit-btn">Acessar Sistema</button>
+          <button type="submit" class="btn-cyber">Entrar</button>
+
+          <p class="signup-text">
+            Ainda não possui uma conta? <a href="#">Criar conta</a>
+          </p>
         </form>
       </div>
     </main>
   </div>
 
-  <script>
-    const togglePasswordBtn = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-
-    togglePasswordBtn.addEventListener('click', () => {
-      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passwordInput.setAttribute('type', type);
-    });
-  </script>
 </body>
 </html>

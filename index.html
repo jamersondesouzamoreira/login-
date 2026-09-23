@@ -1,478 +1,344 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SISTEMA ACADÊMICO - Acesso Cyberpunk</title>
-  
-  <!-- Ícones FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <title>Entrar - Acadêmico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
     }
 
-    body {
-      background-color: #070913;
-      color: #f1f5f9;
-      height: 100vh;
+    :root {  
+      --blue-600: #2f5fe0;  
+      --blue-700: #2347b8;  
+      --blue-50: #eef2ff;  
+      --navy-950: #0a1224;  
+      --navy-800: #13203a;  
+      --ink: #171c26;  
+      --slate-500: #6b7383;  
+      --slate-300: #c4cad6;  
+      --slate-200: #e4e7ee;  
+      --surface: #fbfcfe;  
+      --white: #ffffff;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html, body { 
+      height: 100%; 
+    }
+
+    body {  
+      font-family: 'Inter', sans-serif;  
+      color: var(--ink);  
+      background-color: var(--surface);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .login-page {  
+      display: flex;  
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    /* ===== PAINEL ESQUERDO ===== */
+    .left-panel {  
+      position: relative;  
+      flex: 0 0 46%;  
+      display: flex;  
+      flex-direction: column;  
+      justify-content: space-between;  
+      padding: 4rem 3.5rem;  
+      overflow: hidden;  
+      background: 
+        linear-gradient(180deg, rgba(10,18,36,0.75) 0%, rgba(10,18,36,0.40) 45%, rgba(10,18,36,0.85) 100%),
+        url('data:image/png;base64,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');
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blue-600);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(47, 95, 224, 0.4);
     }
 
-    .login-wrapper {
-      display: flex;
-      width: 100vw;
-      height: 100vh;
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
     }
 
-    /* --- LADO ESQUERDO: Imagem Cyberpunk Hi-Tech --- */
-    .left-panel {
-      flex: 1.25;
-      background: linear-gradient(135deg, rgba(7, 9, 19, 0.85) 0%, rgba(7, 9, 19, 0.3) 100%),
-                  url('image_94a1c5.jpg') center/cover no-repeat;
-      position: relative;
+    .hero-content {
+      max-width: 440px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span {
+      color: #6085ef;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--slate-300);
+      font-weight: 400;
+    }
+
+    .brand-footer {
+      font-size: 0.875rem;
+      color: var(--slate-500);
+    }
+
+    /* ===== PAINEL DIREITO ===== */
+    .right-panel {  
+      flex: 1;  
+      display: flex;  
+      flex-direction: column;  
+      justify-content: center;  
+      align-items: center;  
+      padding: 3rem 2rem;  
+      background-color: var(--surface);
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-header {
+      margin-bottom: 2.25rem;
+    }
+
+    .form-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--navy-950);
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.95rem;
+      color: var(--slate-500);
+    }
+
+    .login-form {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 60px 80px;
-      border-right: 2px solid rgba(0, 210, 255, 0.3);
-      box-shadow: 5px 0 25px rgba(0, 210, 255, 0.2);
+      gap: 1.25rem;
     }
 
-    .brand-logo {
+    .input-group {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #00d2ff;
-      letter-spacing: 1px;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .brand-logo i {
-      font-size: 24px;
-      filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
-    }
-
-    .panel-content {
-      max-width: 500px;
-    }
-
-    .panel-tag {
-      display: inline-block;
-      font-size: 13px;
+    .input-group label {
+      font-size: 0.875rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #a855f7;
-      margin-bottom: 12px;
+      color: var(--navy-800);
     }
 
-    .panel-title {
-      font-size: 38px;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      color: #ffffff;
-      background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .panel-description {
-      font-size: 15px;
-      color: #94a3b8;
-      line-height: 1.6;
-    }
-
-    .panel-footer {
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    /* --- LADO DIREITO: Card de Login Estilo Moderno / Cyberpunk --- */
-    .right-panel {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b0e17;
-      background-image: 
-        radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.08) 0%, transparent 40%);
-      padding: 40px;
-      position: relative;
-    }
-
-    .login-card {
+    .input-field {
       width: 100%;
-      max-width: 440px;
-      background: rgba(13, 17, 28, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 210, 255, 0.3);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.15), inset 0 0 15px rgba(0, 212, 255, 0.05);
-    }
-
-    .card-header {
-      margin-bottom: 28px;
-    }
-
-    .card-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 6px;
-    }
-
-    .card-subtitle {
-      font-size: 14px;
-      color: #6b7c96;
-    }
-
-    /* Formulário */
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: #8a99ad;
-      margin-bottom: 8px;
-    }
-
-    .input-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .input-wrapper i.icon-left {
-      position: absolute;
-      left: 15px;
-      color: #00d2ff;
-      font-size: 14px;
-    }
-
-    .input-wrapper i.icon-right {
-      position: absolute;
-      right: 15px;
-      color: #6b7c96;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .input-wrapper input {
-      width: 100%;
-      padding: 12px 15px 12px 42px;
-      background: #0d121d;
-      border: 1px solid #00d2ff;
-      border-radius: 8px;
-      color: #ffffff;
-      font-size: 14px;
+      padding: 0.875rem 1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background-color: var(--white);
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-md);
       outline: none;
-      box-shadow: 0 0 8px rgba(0, 210, 255, 0.2);
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
 
-    .input-wrapper input:focus {
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-      border-color: #00f0ff;
+    .input-field::placeholder {
+      color: var(--slate-500);
+      opacity: 0.7;
     }
 
-    /* Opções (Lembrar / Esqueci Senha) */
+    .input-field:focus {
+      border-color: var(--blue-600);
+      box-shadow: 0 0 0 4px var(--blue-50);
+    }
+
     .form-options {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 24px;
-      font-size: 13px;
+      margin-top: 0.25rem;
     }
 
     .remember-me {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #8a99ad;
+      gap: 0.5rem;
       cursor: pointer;
+      user-select: none;
     }
 
     .remember-me input[type="checkbox"] {
-      accent-color: #00d2ff;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--blue-600);
       cursor: pointer;
     }
 
-    .forgot-link {
-      color: #00d2ff;
-      text-decoration: none;
+    .remember-me span {
+      font-size: 0.875rem;
+      color: var(--slate-500);
       font-weight: 500;
     }
 
+    .forgot-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--blue-600);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
     .forgot-link:hover {
+      color: var(--blue-700);
       text-decoration: underline;
     }
 
-    /* Botão Entrar */
-    .btn-login {
+    .submit-btn {
       width: 100%;
-      padding: 14px;
-      background: transparent;
-      border: 1px solid #00d2ff;
-      border-radius: 8px;
-      color: #00d2ff;
-      font-size: 15px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-    }
-
-    .btn-login:hover {
-      background: #00d2ff;
-      color: #000;
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
-    }
-
-    /* Divisor e Redes Sociais */
-    .social-divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #5c6b80;
-      font-size: 12px;
-      margin: 24px 0 15px 0;
-    }
-
-    .social-divider::before,
-    .social-divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 1px solid #252f40;
-    }
-
-    .social-divider span {
-      padding: 0 12px;
-    }
-
-    .social-login {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .social-btn {
-      width: 42px;
-      height: 42px;
-      background: #121824;
-      border: 1px solid #252f40;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .social-btn:hover {
-      border-color: #00d2ff;
-      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
-      color: #00d2ff;
-    }
-
-    .signup-text {
-      text-align: center;
-      color: #6b7c96;
-      font-size: 13px;
-    }
-
-    .signup-text a {
-      color: #00d2ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Modal de Recuperação de Senha */
-    .recovery-modal {
-      display: none;
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(13, 17, 28, 0.95);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 40px;
-      flex-direction: column;
-      justify-content: center;
-      z-index: 10;
-    }
-
-    .recovery-modal.active {
-      display: flex;
-    }
-
-    .back-btn {
-      background: transparent;
+      padding: 0.875rem;
+      margin-top: 0.5rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      background-color: var(--blue-600);
       border: none;
-      color: #00d2ff;
-      font-size: 13px;
+      border-radius: var(--radius-md);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 20px;
+      transition: var(--transition);
+      box-shadow: 0 2px 6px rgba(47, 95, 224, 0.25);
     }
 
+    .submit-btn:hover {
+      background-color: var(--blue-700);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(47, 95, 224, 0.35);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
     @media (max-width: 900px) {
       .left-panel {
         display: none;
+      }
+      .right-panel {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <main class="login-wrapper">
-    <!-- LADO ESQUERDO: Imagem Cyberpunk selecionada -->
-    <section class="left-panel">
-      <div class="brand-logo">
-        <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
-        <span>SISTEMA ACADÊMICO</span>
+  <div class="login-page">
+    <!-- PAINEL ESQUERDO: BRANDING & APRESENTAÇÃO -->
+    <aside class="left-panel">
+      <div class="brand-header">
+        <div class="brand-icon">A</div>
+        <span class="brand-name">Acadêmico</span>
       </div>
 
-      <div class="panel-content">
-        <span class="panel-tag">Tecnologia &amp; Informação</span>
-        <h1 class="panel-title">Tecnologia e informação em um único ambiente.</h1>
-        <p class="panel-description">
-          Acesse sua conta para acompanhar conteúdos, atividades e informações da plataforma acadêmica com máxima performance e segurança.
+      <div class="hero-content">
+        <h1 class="hero-title">Sua jornada acadêmica em <span>um só lugar</span>.</h1>
+        <p class="hero-description">
+          Acesse notas, materiais de aula e acompanhe o seu progresso educacional com uma experiência moderna e intuitiva.
         </p>
       </div>
 
-      <footer class="panel-footer">
-        <small>&copy; 2026 Plataforma Acadêmica. Todos os direitos reservados.</small>
-      </footer>
-    </section>
-
-    <!-- LADO DIREITO: Formulário Completo -->
-    <section class="right-panel">
-      <div class="login-card">
-        
-        <!-- Formulário de Login Principal -->
-        <div id="loginFormView">
-          <header class="card-header">
-            <h2 class="card-title">Bem-vindo novamente</h2>
-            <p class="card-subtitle">Informe seus dados para acessar o sistema.</p>
-          </header>
-
-          <form action="#" method="POST">
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <div class="input-wrapper">
-                <i class="fa-regular fa-envelope icon-left" aria-hidden="true"></i>
-                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="password">Senha</label>
-              <div class="input-wrapper">
-                <i class="fa-solid fa-lock icon-left" aria-hidden="true"></i>
-                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
-                <i class="fa-regular fa-eye icon-right" id="togglePassword" aria-hidden="true"></i>
-              </div>
-            </div>
-
-            <div class="form-options">
-              <label class="remember-me">
-                <input type="checkbox" id="remember" name="remember">
-                <span>Lembrar de mim</span>
-              </label>
-              <a href="#" class="forgot-link" id="showRecovery">Esqueci minha senha</a>
-            </div>
-
-            <button type="submit" class="btn-login">Entrar</button>
-          </form>
-
-          <div class="social-divider">
-            <span>Ou acesse com</span>
-          </div>
-
-          <!-- Login Social (Google, GitHub, Apple) -->
-          <div class="social-login">
-            <button type="button" class="social-btn" title="Entrar com Google"><i class="fa-brands fa-google"></i></button>
-            <button type="button" class="social-btn" title="Entrar com GitHub"><i class="fa-brands fa-github"></i></button>
-            <button type="button" class="social-btn" title="Entrar com Apple"><i class="fa-brands fa-apple"></i></button>
-          </div>
-
-          <div class="signup-text">
-            Não possui uma conta? <a href="#">Criar conta</a>
-          </div>
-        </div>
-
-        <!-- Tela de Recuperação de Senha -->
-        <div class="recovery-modal" id="recoveryView">
-          <button class="back-btn" id="backToLogin"><i class="fa-solid fa-arrow-left"></i> Voltar ao login</button>
-          <header class="card-header">
-            <h2 class="card-title">Recuperar Senha</h2>
-            <p class="card-subtitle">Insira seu e-mail cadastrado para redefinir o acesso.</p>
-          </header>
-
-          <form action="#" method="POST">
-            <div class="form-group">
-              <label for="recoveryEmail">E-mail</label>
-              <div class="input-wrapper">
-                <i class="fa-regular fa-envelope icon-left" aria-hidden="true"></i>
-                <input type="email" id="recoveryEmail" placeholder="Digite seu e-mail" required>
-              </div>
-            </div>
-            <button type="submit" class="btn-login" style="margin-top: 10px;">Enviar Instruções</button>
-          </form>
-        </div>
-
+      <div class="brand-footer">
+        &copy; 2026 Portal Acadêmico. Todos os direitos reservados.
       </div>
-    </section>
-  </main>
+    </aside>
 
-  <!-- Scripts de Interatividade -->
-  <script>
-    const showRecovery = document.getElementById('showRecovery');
-    const backToLogin = document.getElementById('backToLogin');
-    const recoveryView = document.getElementById('recoveryView');
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
+    <!-- PAINEL DIREITO: FORMULÁRIO DE AUTENTICAÇÃO -->
+    <main class="right-panel">
+      <div class="form-wrapper">
+        <header class="form-header">
+          <h2 class="form-title">Acesse sua conta</h2>
+          <p class="form-subtitle">Informe suas credenciais para continuar</p>
+        </header>
 
-    showRecovery.addEventListener('click', (e) => {
-      e.preventDefault();
-      recoveryView.classList.add('active');
-    });
+        <form class="login-form" action="#" method="POST">
+          <div class="input-group">
+            <label for="email">E-mail ou Matrícula</label>
+            <input 
+              type="text" 
+              id="email" 
+              name="email" 
+              class="input-field" 
+              placeholder="exemplo@instituicao.edu.br" 
+              required
+              autocomplete="username"
+            >
+          </div>
 
-    backToLogin.addEventListener('click', () => {
-      recoveryView.classList.remove('active');
-    });
+          <div class="input-group">
+            <label for="password">Senha</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="input-field" 
+              placeholder="••••••••" 
+              required
+              autocomplete="current-password"
+            >
+          </div>
 
-    togglePassword.addEventListener('click', () => {
-      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passwordInput.setAttribute('type', type);
-      togglePassword.classList.toggle('fa-eye');
-      togglePassword.classList.toggle('fa-eye-slash');
-    });
-  </script>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" name="remember">
+              <span>Lembrar-me</span>
+            </label>
+            <a href="#" class="forgot-link">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit" class="submit-btn">Entrar na plataforma</button>
+        </form>
+      </div>
+    </main>
+  </div>
 
 </body>
 </html>
